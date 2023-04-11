@@ -26,8 +26,9 @@ elseif(APPLE)
     # Set Apple version
     set(SPICE_URL https://naif.jpl.nasa.gov/pub/naif/toolkit//FORTRAN/MacIntel_OSX_gfortran_64bit/packages/toolkit.tar.Z)
 else()
-    # Throw error
-    message(FATAL_ERROR "OS not supported")
+    # Set Windows (CYGWIN) version
+    # Note: untested
+    set(SPICE_URL https://naif.jpl.nasa.gov/pub/naif/toolkit//FORTRAN/PC_Cygwin_gfortran_64bit/packages/toolkit.tar.gz)
 endif()
 
 # Add module to download source code
