@@ -9,6 +9,9 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
+# Set download name
+set(SPICE_DOWNLOAD ${PROJECT_NAME}-download)
+
 # Set source and header file directories
 set(SPICE_SOURCE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
@@ -39,13 +42,13 @@ set(FETCHCONTENT_QUIET FALSE)
 
 # Download source code
 FetchContent_Declare(
-    ${PROJECT_NAME}
+    ${SPICE_DOWNLOAD}
     URL ${SPICE_URL}
 )
-FetchContent_MakeAvailable(${PROJECT_NAME})
+FetchContent_MakeAvailable(${SPICE_DOWNLOAD})
 
 # Glob source files
-file(GLOB_RECURSE SPICE_SOURCE_FILES ${${PROJECT_NAME}_SOURCE_DIR}/src/spicelib/*.f)
+file(GLOB_RECURSE SPICE_SOURCE_FILES ${${SPICE_DOWNLOAD}_SOURCE_DIR}/src/spicelib/*.f)
 
 # Set compiler flags
 set(CMAKE_Fortran_FLAGS                "-m64 -fPIC -std=legacy -Wno-character-truncation")
